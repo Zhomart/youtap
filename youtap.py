@@ -22,14 +22,15 @@ import re
 import sys
 import urllib2
 
+
 def getVideoUrl(content):
-    fmtre = re.search('(?<=fmt_url_map=).*', content)
+    fmtre = re.search('(?<=fmt_stream_map=).*', content)
     grps = fmtre.group(0).split('&amp;')
     vurls = urllib2.unquote(grps[0])
     videoUrl = None
-    for vurl in vurls.split('|'):
+    for vurl in vurls.split(','):
         if vurl.find('itag=5') > 0:
-            return vurl
+            return urllib2.url2pathname(vurl[4:])
     return None
 
 def getTitle(content):

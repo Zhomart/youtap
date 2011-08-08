@@ -8,3 +8,10 @@ License under: Apache License, Version: 2.0
 	(http://www.apache.org/licenses/LICENSE-2.0.html)
 
 The reason for giving the link in double-quotes is that sometimes the link contain '&'(ampersand), which the UNIX interprets as "run the program in background"
+
+
+Sundar Srinivasan's version doesn't work when I tested on 8 august 2011.
+
+There is no fmt_url_map string in `content` and urllib2.unqote() doesn't decode percent encoded url (I dunno why)
+But there is fmt_stream_map string in `content` and I added urllib2.url2pathname() to decode url
+
