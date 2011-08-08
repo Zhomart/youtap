@@ -29,8 +29,11 @@ def getVideoUrl(content):
     vurls = urllib2.unquote(grps[0])
     videoUrl = None
     for vurl in vurls.split(','):
+        print urllib2.url2pathname(vurl[4:]),"\n"
         if vurl.find('itag=5') > 0:
+            continue
             return urllib2.url2pathname(vurl[4:])
+    exit()
     return None
 
 def getTitle(content):
